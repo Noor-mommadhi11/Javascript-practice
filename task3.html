@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Basic Functions (1–8)
+        // 1
+function hello() {
+    console.log("Hello World");
+}
+hello();
+
+// 2
+function welcome(name) {
+    console.log("Welcome " + name);
+}
+welcome("Noor");
+
+// 3
+function add(a, b) {
+    return a + b;
+}
+console.log(add(5, 9));
+
+// 4
+function checkEvenOdd(num) {
+    if (num % 2 === 0) return "Even";
+    else return "Odd";
+}
+console.log(checkEvenOdd(4));
+
+// 5
+function square(num) {
+    return num * num;
+}
+console.log(square(5));
+
+// 6
+function largest(a, b, c) {
+    return Math.max(a, b, c);
+}
+console.log(largest(10, 25, 15));
+
+// 7
+function showAge(age = 18) {
+    console.log(age);
+}
+showAge();
+
+// 8
+function fullName(first, last) {
+    return first + " " + last;
+}
+console.log(fullName("Noor", "A"));
+
+
+//Return & Scope (9–14)
+// 9
+function multiply(a, b, c) {
+    return a * b * c;
+}
+console.log(multiply(2, 3, 4));
+
+// 10 (var, let, const)
+function scopeDemo() {
+    var a = 10;
+    let b = 20;
+    const c = 30;
+
+    console.log(a, b, c);
+}
+scopeDemo();
+
+// 11 (nested function)
+function outer() {
+    function inner() {
+        console.log("Inner function");
+    }
+    inner();
+}
+outer();
+
+// 12 (global variable)
+let globalVar = "I am global";
+
+function testGlobal() {
+    console.log(globalVar);
+}
+testGlobal();
+
+// 13 (block scope)
+{
+    let x = 10;
+}
+// console.log(x); ❌ Error
+
+// 14 (hoisting)
+console.log(a); // undefined
+var a = 5;
+
+// console.log(b); ❌ Error
+let b = 10;
+
+//Function Types (15–20)
+
+// 15 (anonymous)
+const greet = function() {
+    console.log("Hello");
+};
+greet();
+
+// 16 (arrow function)
+const greetArrow = () => {
+    console.log("Hello Arrow");
+};
+greetArrow();
+
+// 17 (single-line arrow)
+const sum = (a, b) => a + b;
+console.log(sum(2, 3));
+
+// 18 (function expression)
+const sayHi = function() {
+    console.log("Hi");
+};
+sayHi();
+
+// 19 (this difference)
+const obj = {
+    name: "Noor",
+    normal: function() {
+        console.log(this.name);
+    },
+    arrow: () => {
+        console.log(this.name); // undefined
+    }
+};
+obj.normal();
+obj.arrow();
+
+// 20 (IIFE)
+(function() {
+    console.log("Executed immediately");
+})();
+
+
+//Callback & Higher Order Functions (21–25)
+// 21
+function execute(callback) {
+    callback();
+}
+execute(() => console.log("Callback executed"));
+
+// 22 (calculator)
+function calculator(a, b, operation) {
+    return operation(a, b);
+}
+const addFn = (a, b) => a + b;
+console.log(calculator(5, 3, addFn));
+
+// 23
+function message(fn) {
+    console.log("Start");
+    fn();
+}
+message(() => console.log("Custom message"));
+
+// 24 (delay)
+function delay(callback) {
+    setTimeout(callback, 2000);
+}
+delay(() => console.log("Executed after 2 seconds"));
+
+// 25 (custom map)
+function customMap(arr, fn) {
+    let result = [];
+    for (let i = 0; i < arr.length; i++) {
+        result.push(fn(arr[i]));
+    }
+    return result;
+}
+console.log(customMap([1,2,3], x => x * 2));
+
+//Currying (26–28)
+
+// 26
+function addCurry(a) {
+    return function(b) {
+        return function(c) {
+            return a + b + c;
+        };
+    };
+}
+console.log(addCurry(1)(2)(3));
+
+// 27
+const multiplyCurry = a => b => c => a * b * c;
+console.log(multiplyCurry(2)(3)(4));
+
+// 28
+const greetCurry = greet => name => time =>
+    `${greet} ${name}, ${time}`;
+
+console.log(greetCurry("Hello")("Noor")("Good Morning"));
+
+//Generator Function (29–31)
+
+// 29
+function* messages() {
+    yield "Hello";
+    yield "Welcome";
+    yield "Bye";
+}
+
+// 30
+for (let msg of messages()) {
+    console.log(msg);
+}
+
+// 31 (infinite)
+function* numbers() {
+    let i = 1;
+    while (true) {
+        yield i++;
+    }
+}
+const gen = numbers();
+console.log(gen.next().value);
+console.log(gen.next().value);
+
+//Spread Operator (32–34)
+
+// 32
+let arr1 = [1,2];
+let arr2 = [3,4];
+let merged = [...arr1, ...arr2];
+console.log(merged);
+
+// 33
+let obj1 = {name: "Noor", age: 20};
+let obj2 = {...obj1, age: 25};
+console.log(obj2);
+
+// 34
+let arr = [...arr1, ...arr2, 5, 6];
+console.log(arr);
+
+//Rest Operator (35–37)
+
+// 35
+function sumAll(...nums) {
+    return nums.reduce((a, b) => a + b);
+}
+console.log(sumAll(1,2,3,4));
+
+// 36
+function printArgs(...args) {
+    console.log(args);
+}
+printArgs(1,2,3);
+
+// 37
+function maxValue(...nums) {
+    return Math.max(...nums);
+}
+console.log(maxValue(10, 50, 30));
+
+//Switch Case (38–40)
+
+// 38
+let day = 3;
+switch(day) {
+    case 1: console.log("Monday"); break;
+    case 2: console.log("Tuesday"); break;
+    case 3: console.log("Wednesday"); break;
+    default: console.log("Invalid");
+}
+
+// 39
+let a = 10;
+let b2 = 5;
+let operator = "+"; // change to -, *, /
+
+switch (operator) {
+    case "+":
+        console.log("Result:", a + b2);
+        break;
+
+    case "-":
+        console.log("Result:", a - b2);
+        break;
+
+    case "*":
+        console.log("Result:", a * b2);
+        break;
+
+    case "/":
+        console.log("Result:", a / b2);
+        break;
+
+    default:
+        console.log("Invalid operator");
+}
+
+// 40
+let marks = 85;
+if (marks >= 90) console.log("A");
+else if (marks >= 75) console.log("B");
+else if (marks >= 50) console.log("C");
+else console.log("Fail");
+
+    </script>
+</body>
+</html>
