@@ -1,0 +1,232 @@
+<html>
+    <head><title>Task 4</title></head>
+    <body>
+        <script>
+            
+            // Spread & Rest Operator
+
+// Merge arrays + add 50
+let arr1 = [10, 20];
+let arr2 = [30, 40];
+let merged = [...arr1, ...arr2, 50];
+console.log(merged);
+
+// Clone array
+let original = [1, 2, 3];
+let clone = [...original];
+clone.push(4);
+console.log(original); // [1,2,3]
+console.log(clone);    // [1,2,3,4]
+
+// Merge objects (override)
+let obj1 = { name: "A", salary: 1000 };
+let obj2 = { age: 25, salary: 2000 };
+let result = { ...obj1, ...obj2 };
+console.log(result); // salary = 2000
+
+// Rest - sum function
+function sum(...nums) {
+  return nums.reduce((a, b) => a + b, 0);
+}
+console.log(sum(1,2,3,4));
+
+// First 2 separate, rest array
+function test(a, b, ...rest) {
+  console.log(rest);
+}
+test(1,2,3,4,5);
+
+
+//Destructuring
+
+// First & last
+let arr3 = [5,10,15,20];
+let [first, , , last] = arr3;
+console.log(first, last);
+
+// Swap
+let a = 10, b = 20;
+[a, b] = [b, a];
+
+// Nested extract
+let nested = [1,[2,[3,[4]]]];
+let [ , [ , [ , [value]]]] = nested;
+console.log(value);
+
+// Object rename
+let user = { name:"John", age:25 };
+let { name: userName, age } = user;
+
+// Default value
+let obj5 = { name: "Sam" };
+let { name, city = "Chennai" } = obj5;
+
+
+//Basic Array Operations
+
+let arr5 = [1,2,3,4,5];
+
+// push
+arr.push(6,7);
+
+// pop
+let last1 = arr.pop();
+
+// shift
+arr.shift();
+
+// unshift
+arr.unshift(0);
+
+// splice remove middle
+arr.splice(2,2);
+
+
+//Slice / Splice / Flat
+let nums = [1000,2000,3000,4000,5000,6000];
+
+// slice
+let result1 = nums.slice(3,6);
+
+// splice replace
+let arr6 = [1,2,3,4];
+arr6.splice(1,2,"a","b");
+
+// flat full
+let nested1 = [1,[2,[3,[4]]]];
+console.log(nested1.flat(Infinity));
+
+// flat one level
+console.log(nested1.flat(1));
+
+// insert without delete
+arr6.splice(1,0,"new");
+
+//Searching & Checking
+
+let arr7 = [10,20,100,30];
+
+// includes
+console.log(arr7.includes(100));
+
+// indexOf from index
+console.log([1,2,3,4].indexOf(3,2));
+
+// lastIndexOf
+console.log([1,5,3,5,2].lastIndexOf(5));
+
+// every
+console.log([1,2,3].every(n => n > 0));
+
+// some
+console.log([10,20,60].some(n => n > 50));
+
+//Higher Order Functions
+
+//forEach
+
+[1,2,3].forEach(n => console.log(n));
+
+// return won't work
+let res = [1,2,3].forEach(n => n*2);
+console.log(res); // undefined
+
+
+//map
+
+
+console.log([1,2,3].map(n => n*2));
+
+let names = ["john","sam"];
+console.log(names.map(n => n.toUpperCase()));
+
+let emp1 = [{salary:1000},{salary:2000}];
+console.log(emp1.map(e => e.salary));
+
+//filter
+
+let emp2 = [{salary:100000},{salary:400000}];
+console.log(emp2.filter(e => e.salary > 300000));
+
+console.log([1,2,3,4].filter(n => n%2===0));
+
+console.log(["hello","javascript"].filter(s => s.length > 5));
+
+
+//Reduce
+// sum
+console.log([10,20,30].reduce((a,b)=>a+b,0));
+
+// max
+console.log([10,50,20].reduce((a,b)=> a>b ? a : b));
+
+// count
+console.log([1,2,3].reduce(a=>a+1,0));
+
+// array → object
+let arr = ["a","b","c"];
+let obj = arr.reduce((acc, val) => {
+  acc[val] = true;
+  return acc;
+}, {});
+
+// total salary
+let emp = [{salary:1000},{salary:2000}];
+let total1 = emp.reduce((a,e)=>a+e.salary,0);
+
+//Conversion
+
+
+// toString
+console.log([1,2,3].toString());
+
+// join
+console.log([1,2,3].join(" - "));
+
+// string → array
+console.log("1,2,3".split(","));
+
+// nested → flat string
+console.log([1,[2,3]].flat().join(","));
+
+// map + join
+let words = ["I","love","JS"];
+let sentence = words.map(w => w).join(" ");
+
+
+// Bonus Tasks
+
+
+// cart total
+let cart = [{price:100},{price:200}];
+let total = cart.reduce((a,i)=>a+i.price,0);
+
+// under 500
+let products = [{price:300},{price:700}];
+console.log(products.filter(p => p.price < 500));
+
+// search
+let items = ["apple","banana","grape"];
+let search = "ap";
+console.log(items.filter(i => i.includes(search)));
+
+// remove duplicates
+let arr8 = [1,2,2,3];
+let unique = [...new Set(arr8)];
+
+// group by salary
+let emp3 = [
+  {name:"A", salary:10000},
+  {name:"B", salary:50000}
+];
+
+let grouped = emp3.reduce((acc, e) => {
+  let key = e.salary < 30000 ? "low" : "high";
+  acc[key] = acc[key] || [];
+  acc[key].push(e);
+  return acc;
+}, {});
+
+        </script>
+    </body>
+</html>
