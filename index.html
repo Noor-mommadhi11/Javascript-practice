@@ -1,189 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>JavaScript Practice</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Product Listing Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<script>
+    <h1>Product Listing Dashboard</h1>
 
-/* TASK 1 */
-var age = 22;
-console.log(age);
-age = 25;
-console.log(age);
+    <div class="controls">
+        <input type="text" id="searchInput" placeholder="Search products..." />
 
-/* TASK 2 */
-let name = "Noor";
-console.log(name);
-name = "A Noor";
-console.log(name);
+        <select id="categoryFilter">
+            <option value="all">All Categories</option>
+            <option value="electronics">Electronics</option>
+            <option value="jewelery">Jewelery</option>
+            <option value="men's clothing">Men's Clothing</option>
+            <option value="women's clothing">Women's Clothing</option>
+        </select>
 
-/* TASK 3 */
-const birthYear = 2001;
-console.log(birthYear);
-// birthYear = 2002; // Error if you try to change
+        <button onclick="sortProducts('low')">Sort Low → High</button>
+        <button onclick="sortProducts('high')">Sort High → Low</button>
+    </div>
 
-/* TASK 4 */
-var number = 10;
-console.log(number);
-var number = 20;
-console.log(number);
+    <p id="loader">Loading...</p>
+    <p id="error"></p>
 
-/* TASK 5 */
-let greeting = "Hello";
-// let greeting = "Hi"; // Error: cannot redeclare
+    <div id="productContainer" class="product-grid"></div>
 
-/* TASK 6 */
-console.log("Noor");
-console.log(22);
-console.log("Salem");
-console.log(100);
-console.log("JavaScript is fun");
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span id="closeBtn">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
 
-/* TASK 7 */
-alert("Welcome to JavaScript");
-
-/* TASK 8 */
-let likeCoding = confirm("Do you like coding?");
-console.log(likeCoding);
-
-/* TASK 9 */
-let userName = prompt("What is your name?");
-console.log(userName);
-
-/* TASK 10 */
-console.warn("This is a warning");
-
-/* TASK 11 */
-console.error("This is an error");
-
-/* TASK 12 */
-console.log("Console will clear");
-console.clear();
-
-/* TASK 13 */
-document.writeln("Noor A <br>");
-
-/* TASK 14 */
-let nameUser = prompt("Enter your name");
-alert(nameUser);
-console.log(nameUser);
-
-/* TASK 15 */
-var userAge = prompt("Enter your age");
-console.log(userAge);
-document.writeln(userAge + "<br>");
-
-/* TASK 16 */
-const breakfast = confirm("Have you had breakfast?");
-console.log(breakfast);
-
-/* TASK 17 */
-var city = "Mumbai";
-let country = "India";
-const planet = "Earth";
-console.log(city, country, planet);
-
-/* TASK 18 */
-let value = 5;
-console.log(value);
-value = 10;
-console.log(value);
-value = 15;
-console.log(value);
-
-/* TASK 19 */
-console.log("Normal message");
-console.warn("Warning message");
-console.error("Error message");
-
-/* TASK 20 */
-const uName = prompt("Enter your name");
-let uAge = prompt("Enter your age");
-var student = confirm("Are you a student?");
-console.log(uName, uAge, student);
-alert("Welcome " + uName);
-
-/* TASK 21 */
-console.clear();
-alert("Hello!");
-let welcomeName = prompt("What is your name?");
-alert("Welcome " + welcomeName);
-document.writeln(welcomeName + "<br>");
-
-/* TASK 22 */
-{
- var a = 100;
- let b = 200;
- const c = 300;
-}
-console.log(a);
-// console.log(b); // Error
-// console.log(c); // Error
-
-/* TASK 23 */
-var n1 = 10;
-let n2 = 20;
-const n3 = 30;
-console.log(n1, n2, n3);
-
-/* TASK 24 */
-let jsLike = confirm("Do you like JavaScript?");
-console.log(jsLike);
-console.warn(jsLike);
-console.error(jsLike);
-
-/* TASK 25 */
-const personName = prompt("Enter your name");
-document.writeln("Your name is: " + personName + "<br>");
-console.log(personName);
-
-/* TASK 26 */
-let ageUser = prompt("Enter your age");
-alert(ageUser);
-console.log(ageUser);
-document.writeln(ageUser + "<br>");
-
-/* TASK 27 */
-{
- var x = 50;
- let y = 60;
-}
-console.log(x);
-// console.log(y); // Error
-
-/* TASK 28 */
-let adult = confirm("Are you 18+?");
-if(adult){
-console.log("Adult");
-}else{
-console.warn("Minor");
-}
-
-/* TASK 29 */
-var fruit = "Apple";
-fruit = "Banana";
-
-let vehicle = "Car";
-vehicle = "Bike";
-
-console.log(fruit, vehicle);
-
-/* TASK 30 */
-console.clear();
-alert("Practice Start");
-
-const pName = prompt("Enter your name");
-let pAge = prompt("Enter your age");
-var happy = confirm("Are you happy?");
-
-console.log(pName, pAge, happy);
-
-alert("Practice End");
-document.writeln("Thank You");
-
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
